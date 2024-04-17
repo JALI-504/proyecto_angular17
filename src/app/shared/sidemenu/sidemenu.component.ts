@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { routes } from '../../app.routes';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
+import { routes } from '../../app.routes';
+
+
 
 @Component({
   selector: 'app-sidemenu',
