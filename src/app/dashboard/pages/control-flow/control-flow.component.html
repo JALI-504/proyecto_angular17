@@ -1,5 +1,7 @@
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
   <div class="bg-white rounded shadow p-10">
+    <h2 class="text-3xl">Condicion If</h2>
+    <hr />
     <h2 class="text-2xl font-blod bm-5">if: {{ showContent() }}</h2>
 
     <button
@@ -17,20 +19,50 @@
   </div>
 
   <div class="bg-white rounded shadow p-10">
-
-    <h2 class="text-3xl">{{grade()}}</h2>
+    <h2 class="text-3xl">Condicion Switch</h2>
+    <hr />
+    <h2 class="text-3xl">{{ grade() }}</h2>
 
     @switch ( grade()) {
        @case ('A') {
-    <p>Arriba de 90</p>
+        <p>Arriba de 90</p>
+        }
+        @case ('B') {
+        <p>Mayor a 80, menor a 90</p>
+        }
+        @case ('F') {
+        <p>Menor a 60</p>
+        }
+        @default { Default case. }
     }
-      @case ('B') {
-    <p>Mayor a 80, menor a 90</p>
-    } 
-      @case ('F') {
-    <p>Menor a 60</p>
-    } 
-      @default { Default case. }
-  }
   </div>
+
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-3xl">Condicion For</h2>
+    <hr />
+    <ul>
+      @for (framework of frameworks(); track frameworks;
+      let i = $index, first = $first, last = $last, even = $even, odd = $odd, count = $count) {
+      <li [class]="{
+        'bg-red-300': even && !first && !last,
+        'bg-pink-200': odd && !first && !last,
+        'bg-violet-300': first || last,
+      }"> 
+        {{ i + 1 }}/{{ count }}. {{ frameworks() }}
+      </li>
+      }
+    </ul>
+  </div>
+
+    <div class="bg-white rounded shadow p-10">
+      <ul>
+        @for (framework of frameworks2(); track $index) {
+        <li>{{ frameworks2() }}</li>
+        }
+        @empty {
+        <li>No hay frameworks agregados</li>
+      }
+      </ul>
+    </div>
+
 </section>
